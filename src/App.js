@@ -1,12 +1,58 @@
-import appStyles from "./App.module.css";
-import headerStyles from "./Header.module.css";
-import mainStyles from "./Main.module.css";
-import figureStyles from "./Figure.module.css";
+import styled from '@emotion/styled/macro'
 
+const HeaderStyled = styled.header`
+  /* LAYOUT */
+
+  align-items: center;
+  display: flex;
+  height: 80px;
+  box-sizing: content-box;
+  justify-content: space-between;
+  padding: var(--length-sm) var(--length-lg);
+
+  h1 a {
+    align-items: center;
+    display: flex;
+  }
+
+  h1 img {
+    margin-right: var(--length-md);
+    height: 80px;
+    width: 80px;
+  }
+
+  nav > ul {
+    display: flex;
+  }
+
+  nav li > a {
+    padding: var(--length-md);
+  }
+
+  @media (max-width: 55rem) {
+    height: initial;
+    flex-direction: column;
+  }
+
+  /* STYLE */
+
+  background-color: var(--header-bg-color);
+  border-bottom: 1px solid var(--color-8);
+  box-shadow: var(--header-box-shadow);
+  font-weight: bolder;
+  z-index: 1;
+
+  nav > ul {
+    list-style: none;
+  }
+  nav a {
+    text-decoration: underline;
+  }
+`
 
 function Header() {
   return (
-    <header className={headerStyles.header}>
+    <HeaderStyled>
       <h1>
         <a href="#">
           <img src="https://picsum.photos/80" />
@@ -23,13 +69,52 @@ function Header() {
           </li>
         </ul>
       </nav>
-    </header>
+    </HeaderStyled>
   );
 }
 
+const FigureStyled = styled.figure`
+  /* LAYOUT */
+
+  display: flex;
+  align-items: center;
+  background-color: var(--figure-bg-color);
+
+  figcaption {
+    margin: var(--length-lg) var(--length-md);
+  }
+
+  > img {
+    min-width: 500px;
+    min-height: 500px;
+  }
+
+  @media (max-width: 55rem) {
+    flex-direction: column;
+    > img {
+      width: 100%;
+      min-width: initial;
+      min-height: initial;
+    }
+  }
+
+
+  /* STYLE */
+
+  box-shadow: var(--figure-box-shadow);
+  border-radius: var(--figure-border-radius);
+  overflow: hidden;
+
+  figcaption {
+    font-size: 1rem;
+    text-indent: var(--length-lg);
+    text-align: justify;
+  }
+`
+
 function Figure({ random }) {
   return (
-    <figure className={figureStyles.figure}>
+    <FigureStyled>
       <img src={`https://picsum.photos/500?random=${random}`} />
       <figcaption>
         <p>
@@ -37,13 +122,42 @@ function Figure({ random }) {
           photo has changed how I think about the world.
         </p>
       </figcaption>
-    </figure>
+    </FigureStyled>
   );
 }
 
+const MainStyled = styled.main`
+/* LAYOUT */
+
+align-items: center;
+display: flex;
+flex-direction: column;
+padding: var(--length-lg);
+
+article {
+  max-width: 50rem;
+}
+
+article > h2 {
+  margin-bottom: var(--length-md);
+}
+
+article li:not(:last-child) {
+  margin-bottom: var(--length-lg);
+}
+
+/* STYLE */
+
+background-color: var(--body-bg-color);
+
+article > ol {
+  list-style: none;
+}
+`
+
 function Main() {
   return (
-    <main className={mainStyles.main}>
+    <MainStyled>
       <article>
         <h2>The Best Images on the Internet</h2>
         <ol>
@@ -58,16 +172,28 @@ function Main() {
           </li>
         </ol>
       </article>
-    </main>
+    </MainStyled>
   );
 }
 
+const AppStyled = styled.div`
+  /* LAYOUT */
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  > main {
+    flex-grow: 1;
+  }
+`
+
 function App() {
   return (
-    <div className={appStyles.app}>
+    <AppStyled>
       <Header />
       <Main />
-    </div>
+    </AppStyled>
   );
 }
 
