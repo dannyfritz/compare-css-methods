@@ -1,11 +1,12 @@
-import "./App.css";
-import "./Header.css";
-import "./Main.css";
-import "./Figure.css";
+import appStyles from "./App.module.css";
+import headerStyles from "./Header.module.css";
+import mainStyles from "./Main.module.css";
+import figureStyles from "./Figure.module.css";
+
 
 function Header() {
   return (
-    <header>
+    <header className={headerStyles.header}>
       <h1>
         <a href="#">
           <img src="https://picsum.photos/80" />
@@ -28,7 +29,7 @@ function Header() {
 
 function Figure({ random }) {
   return (
-    <figure>
+    <figure className={figureStyles.figure}>
       <img src={`https://picsum.photos/500?random=${random}`} />
       <figcaption>
         <p>
@@ -42,7 +43,7 @@ function Figure({ random }) {
 
 function Main() {
   return (
-    <main>
+    <main className={mainStyles.main}>
       <article>
         <h2>The Best Images on the Internet</h2>
         <ol>
@@ -63,10 +64,10 @@ function Main() {
 
 function App() {
   return (
-    <>
+    <div className={appStyles.app}>
       <Header />
       <Main />
-    </>
+    </div>
   );
 }
 
