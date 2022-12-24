@@ -7,5 +7,5 @@ This repo will compare various CSS methods:
 - [vanilla-extract](https://vanilla-extract.style/)
 - [stitches](https://stitches.dev/)
 
-## [Reference Sample Page](https://rawgithub.com/dannyfritz/compare-css-methods/index.html)
+## [Reference Sample Page](./index.html)
 
